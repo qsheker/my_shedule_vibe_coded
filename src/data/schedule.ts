@@ -9,14 +9,21 @@ export interface Subject {
   color: 'lecture' | 'practical' | 'independent';
 }
 
-export interface ScheduleItem {
-  id: string;
-  day: string;
+export interface ClassItem {
   time: string;
-  subject: Subject;
-  room: string;
-  type: 'lecture' | 'practical' | 'independent';
-  teacher: string;
+  subject: string;
+  classroom: string;
+  type: 'lecture' | 'practice';
+  lecturer: string;
+}
+
+export interface DaySchedule {
+  day: string;
+  classes: ClassItem[];
+}
+
+export interface ScheduleData {
+  schedule: DaySchedule[];
 }
 
 export const subjects: Subject[] = [
@@ -82,152 +89,200 @@ export const subjects: Subject[] = [
   }
 ];
 
-export const scheduleData: ScheduleItem[] = [
-  // Monday
-  {
-    id: '1',
-    day: 'Monday',
-    time: '09:00',
-    subject: subjects[0],
-    room: 'A-201',
-    type: 'lecture',
-    teacher: 'Prof. Smith'
-  },
-  {
-    id: '2',
-    day: 'Monday',
-    time: '11:00',
-    subject: subjects[1],
-    room: 'B-305',
-    type: 'practical',
-    teacher: 'Dr. Johnson'
-  },
-  {
-    id: '3',
-    day: 'Monday',
-    time: '13:00',
-    subject: subjects[2],
-    room: 'C-102',
-    type: 'lecture',
-    teacher: 'Prof. Brown'
-  },
-  
-  // Tuesday
-  {
-    id: '4',
-    day: 'Tuesday',
-    time: '09:00',
-    subject: subjects[3],
-    room: 'D-401',
-    type: 'practical',
-    teacher: 'Ms. Davis'
-  },
-  {
-    id: '5',
-    day: 'Tuesday',
-    time: '11:00',
-    subject: subjects[0],
-    room: 'A-201',
-    type: 'practical',
-    teacher: 'Prof. Smith'
-  },
-  {
-    id: '6',
-    day: 'Tuesday',
-    time: '15:00',
-    subject: subjects[4],
-    room: 'Gym-1',
-    type: 'practical',
-    teacher: 'Coach Wilson'
-  },
-  
-  // Wednesday
-  {
-    id: '7',
-    day: 'Wednesday',
-    time: '10:00',
-    subject: subjects[5],
-    room: 'E-203',
-    type: 'lecture',
-    teacher: 'Dr. Petrov'
-  },
-  {
-    id: '8',
-    day: 'Wednesday',
-    time: '12:00',
-    subject: subjects[1],
-    room: 'B-305',
-    type: 'lecture',
-    teacher: 'Dr. Johnson'
-  },
-  {
-    id: '9',
-    day: 'Wednesday',
-    time: '14:00',
-    subject: subjects[2],
-    room: 'C-102',
-    type: 'practical',
-    teacher: 'Prof. Brown'
-  },
-  
-  // Thursday
-  {
-    id: '10',
-    day: 'Thursday',
-    time: '09:00',
-    subject: subjects[3],
-    room: 'D-401',
-    type: 'lecture',
-    teacher: 'Ms. Davis'
-  },
-  {
-    id: '11',
-    day: 'Thursday',
-    time: '11:00',
-    subject: subjects[0],
-    room: 'A-201',
-    type: 'independent',
-    teacher: 'Self Study'
-  },
-  {
-    id: '12',
-    day: 'Thursday',
-    time: '13:00',
-    subject: subjects[5],
-    room: 'E-203',
-    type: 'practical',
-    teacher: 'Dr. Petrov'
-  },
-  
-  // Friday
-  {
-    id: '13',
-    day: 'Friday',
-    time: '10:00',
-    subject: subjects[1],
-    room: 'B-305',
-    type: 'practical',
-    teacher: 'Dr. Johnson'
-  },
-  {
-    id: '14',
-    day: 'Friday',
-    time: '12:00',
-    subject: subjects[2],
-    room: 'C-102',
-    type: 'independent',
-    teacher: 'Self Study'
-  },
-  {
-    id: '15',
-    day: 'Friday',
-    time: '14:00',
-    subject: subjects[4],
-    room: 'Gym-1',
-    type: 'practical',
-    teacher: 'Coach Wilson'
-  }
-];
-
-export const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-export const timeSlots = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'];
+export const scheduleData: ScheduleData = {
+  "schedule": [
+    {
+      "day": "Monday",
+      "classes": [
+        {
+          "time": "11:00-11:50",
+          "subject": "Operating Systems",
+          "classroom": "online",
+          "type": "practice",
+          "lecturer": "Kulbayeva Laura"
+        },
+        {
+          "time": "16:00-16:50",
+          "subject": "WEB Technologies 1 (Front End)",
+          "classroom": "C1.358K",
+          "type": "practice",
+          "lecturer": "Aruhan Ali"
+        },
+        {
+          "time": "17:00-17:50",
+          "subject": "WEB Technologies 1 (Front End)",
+          "classroom": "C1.358K",
+          "type": "practice",
+          "lecturer": "Aruhan Ali"
+        },
+        {
+          "time": "18:00-18:50",
+          "subject": "Design and Analysis of Algorithms",
+          "classroom": "C1.237L",
+          "type": "lecture",
+          "lecturer": "Khamidulin Nursultan"
+        },
+        {
+          "time": "19:00-19:50",
+          "subject": "Design and Analysis of Algorithms",
+          "classroom": "C1.237L",
+          "type": "lecture",
+          "lecturer": "Khamidulin Nursultan"
+        },
+        {
+          "time": "20:00-20:50",
+          "subject": "Russian Language 1",
+          "classroom": "online",
+          "type": "practice",
+          "lecturer": "Sabira Sapina / Amarzholova Zhemma / Kaniyeva Gulmira / Akhmetvalieva I."
+        },
+        {
+          "time": "21:00-21:50",
+          "subject": "Russian Language 1",
+          "classroom": "online",
+          "type": "practice",
+          "lecturer": "Sabira Sapina / Amarzholova Zhemma / Kaniyeva Gulmira / Akhmetvalieva I."
+        }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "classes": [
+        {
+          "time": "08:00-08:50",
+          "subject": "WEB Technologies 1 (Front End)",
+          "classroom": "online",
+          "type": "lecture",
+          "lecturer": "Aruhan Ali"
+        },
+        {
+          "time": "09:00-09:50",
+          "subject": "WEB Technologies 1 (Front End)",
+          "classroom": "online",
+          "type": "lecture",
+          "lecturer": "Aruhan Ali"
+        },
+        {
+          "time": "14:00-14:50",
+          "subject": "Russian Language 1",
+          "classroom": "C1.223P / C1.226P / C1.227P",
+          "type": "practice",
+          "lecturer": "Sabira Sapina / Kaniyeva Gulmira / Akhmetvalieva I."
+        },
+        {
+          "time": "15:00-15:50",
+          "subject": "Russian Language 1",
+          "classroom": "C1.223P / C1.226P",
+          "type": "practice",
+          "lecturer": "Sabira Sapina / Kaniyeva Gulmira"
+        },
+        {
+          "time": "16:00-16:50",
+          "subject": "Russian Language 1",
+          "classroom": "C1.223P",
+          "type": "practice",
+          "lecturer": "Amarzhoulova Zhemma"
+        },
+        {
+          "time": "17:00-17:50",
+          "subject": "Russian Language 1",
+          "classroom": "C1.233P",
+          "type": "practice",
+          "lecturer": "Amarzhoulova Zhemma"
+        },
+        {
+          "time": "19:00-19:50",
+          "subject": "Software Design Patterns",
+          "classroom": "C1.134L",
+          "type": "lecture",
+          "lecturer": "Temirgaly Dimmuhammed"
+        }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "classes": [
+        {
+          "time": "14:00-14:50",
+          "subject": "Software Design Patterns",
+          "classroom": "C1.134L",
+          "type": "lecture",
+          "lecturer": "Almas Ospanov"
+        },
+        {
+          "time": "15:00-15:50",
+          "subject": "Software Design Patterns",
+          "classroom": "C1.134L",
+          "type": "lecture",
+          "lecturer": "Almas Ospanov"
+        }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "classes": [
+        {
+          "time": "12:00-12:50",
+          "subject": "Software Design Patterns",
+          "classroom": "1C (C1.239K)",
+          "type": "practice",
+          "lecturer": "Temirgaliev Dilmukhhamed"
+        },
+        {
+          "time": "13:05-13:55",
+          "subject": "Software Design Patterns",
+          "classroom": "1C (C1.239K)",
+          "type": "practice",
+          "lecturer": "Temirgaliev Dilmukhhamed"
+        },
+        {
+          "time": "15:00-15:50",
+          "subject": "Design and Analysis of Algorithms",
+          "classroom": "C1.244K",
+          "type": "practice",
+          "lecturer": "Abay Rakhman"
+        },
+        {
+          "time": "16:00-16:50",
+          "subject": "Design and Analysis of Algorithms",
+          "classroom": "C1.244K",
+          "type": "practice",
+          "lecturer": "Abay Rakhman"
+        }
+      ]
+    },
+    {
+      "day": "Friday",
+      "classes": [
+        {
+          "time": "10:00-10:50",
+          "subject": "Operating Systems",
+          "classroom": "online",
+          "type": "lecture",
+          "lecturer": "Kulbayeva Laura"
+        },
+        {
+          "time": "11:00-11:50",
+          "subject": "Operating Systems",
+          "classroom": "online",
+          "type": "lecture",
+          "lecturer": "Kulbayeva Laura"
+        },
+        {
+          "time": "16:00-16:50",
+          "subject": "Design and Analysis of Algorithms",
+          "classroom": "C1.244K",
+          "type": "practice",
+          "lecturer": "Abay Rakhman"
+        },
+        {
+          "time": "17:00-17:50",
+          "subject": "WEB Technologies 1 (Front End)",
+          "classroom": "C1.358K",
+          "type": "practice",
+          "lecturer": "Aruhan Ali"
+        }
+      ]
+    }
+  ]
+};

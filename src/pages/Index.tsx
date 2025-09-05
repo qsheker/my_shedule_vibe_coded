@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import { subjects, scheduleData, Subject } from '@/data/schedule';
 import SubjectCard from '@/components/SubjectCard';
-import ScheduleGrid from '@/components/ScheduleGrid';
-import SubjectFilter from '@/components/SubjectFilter';
+import ScheduleTable from '@/components/ScheduleTable';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Calendar, BookOpen, GraduationCap } from 'lucide-react';
 
 const Index = () => {
-  const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
 
   return (
     <div className="min-h-screen bg-background">
@@ -42,26 +40,7 @@ const Index = () => {
 
           {/* Schedule Tab */}
           <TabsContent value="schedule" className="space-y-6">
-            <Card className="bg-gradient-card shadow-card border-border/50">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Calendar className="h-5 w-5 text-primary" />
-                  Weekly Schedule
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <SubjectFilter
-                  subjects={subjects}
-                  selectedSubject={selectedSubject}
-                  onSubjectSelect={setSelectedSubject}
-                />
-                
-                <ScheduleGrid
-                  schedule={scheduleData}
-                  selectedSubject={selectedSubject}
-                />
-              </CardContent>
-            </Card>
+            <ScheduleTable scheduleData={scheduleData} />
           </TabsContent>
 
           {/* Subjects Tab */}
